@@ -4,6 +4,7 @@ include("sql_connect.php");
 $nom = htmlspecialchars($_POST["name"]);
 $email = htmlspecialchars($_POST["email"]);
 $pass_wd = htmlspecialchars($_POST["passwd"]);
+$profil = htmlspecialchars($_POST["profile"]);
 $passwd_h = password_hash($pass_wd, PASSWORD_DEFAULT);
 
 //vulnérabilités controle sur les champs
@@ -29,8 +30,8 @@ if($test){
     }
     else{
         //contre mesure vulnérabilités SQLi (sql injection)
-        $req = $PDO->prepare("INSERT INTO test.dilitrust_user (display_name, email, pass) values (:nom,:email,:pass);");
-        $req->execute(array('nom'=>$nom, 'email'=>$email, 'pass'=>$passwd_h));
+        $req = $PDO->prepare("INSERT INTO test.dilitrust_user (display_name, email, pass, profil_id) values (:nom,:email,:pass,:profil_id);");
+        $req->execute(array('nom'=>$nom, 'email'=>$email, 'pass'=>$passwd_h,'profil_id'=>$profil));
     
         $success = 'created';
         $PDO=null;

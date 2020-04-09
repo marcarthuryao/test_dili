@@ -10,7 +10,7 @@ if(!empty($_POST) && isset($_POST["username"])){
     //contre mesure vulnérabilité à SQLi (sql injection)
 
 
-    $req = $PDO->prepare("SELECT * from test.dilitrust_user where email LIKE :email;");
+    $req = $PDO->prepare("SELECT A.id, A.display_name, A.email, A.pass, A.profil_id, B.label from test.dilitrust_user as A inner join test.dilitrust_role as B on A.profil_id=B.profil where A.email LIKE :email;");
     $req->execute(array('email'=>$email));
 
     if($req->rowCount()){
