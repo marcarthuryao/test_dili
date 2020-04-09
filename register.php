@@ -8,7 +8,7 @@
                 echo "<span style='color:red'>This email already exists.<br>Please try another email address<br></span>";
             }
             if(isset($_GET["error"])){
-                echo "<span style='color:red'>Field ".$_GET["error"]." are ncorrectly filled.<br></span>";
+                echo "<span style='color:red'>Field ".$_GET["error"]." are incorrectly filled.<br></span>";
             }?>
             <div>
                 <label for="nom">owner * : </label>

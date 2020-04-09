@@ -34,7 +34,7 @@ if($test){
     
         $success = 'created';
         $PDO=null;
-        header("location: /index.php?success=".$success);
+        header("location: /accueil.php?success=".$success);
     }
 }
 else{
