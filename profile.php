@@ -13,36 +13,70 @@ while($result = $req->fetch(PDO::FETCH_ASSOC)){
 
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Demo Dilitrust</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
 <body>
     <h2><center>Profile :  </center></h2>
     <br><br>
-    <div style="margin-left:25px">
-        <hr>
-        <h3>Welcome <?php echo $data["display_name"]; ?></h3>
-        <br><br>
-        <div>
-            <label for="">Profile : </label>
-            <span><?php echo $data["label"]; ?></span>
+    <?php
+        if($data["profil_id"]!=3) {
+    ?>
+        <div style="margin-left:25px">
+            <hr>
+            <h3>Welcome <?php echo $data["display_name"]; ?></h3>
+            <br><br>
+            <div>
+                <label for="">Profile : </label>
+                <span><?php echo $data["label"]; ?></span>
+            </div>
+            <br>
+            <div>
+                <label for="">Nom : </label>
+                <span><?php echo $data["display_name"]; ?></span>
+            </div>
+            <br>
+            <div>
+                <label for="">email : </label>
+                <span><?php echo $data["email"]; ?></span>
+            </div>
         </div>
-        <br>
-        <div>
-            <label for="">Nom : </label>
-            <span><?php echo $data["display_name"]; ?></span>
+    <php
+        } else{
+    ?>
+        <div style="margin-left:25px">
+            <hr>
+            <h3>Welcome <?php echo $data["display_name"]; ?></h3>
+            <br><br>
+            <div>
+                <label for="">Profile : </label>
+                <span><?php echo $data["label"]; ?></span>
+            </div>
+            <br>
+            <div>
+                <label for="">Nom : </label>
+                <span><?php echo $data["display_name"]; ?></span>
+            </div>
+            <br>
+            <div>
+                <label for="">email : </label>
+                <span><?php echo $data["email"]; ?></span>
+            </div>
+            <br>
+            <hr>
+            <button onclick="window.location.href='/manage_user.php'">Manage users</button>
         </div>
-        <br>
-        <div>
-            <label for="">email : </label>
-            <span><?php echo $data["email"]; ?></span>
-        </div>
-        <br>
-        <hr>
-        <button onclick="window.location.href='/accueil.php'">Back home</button>
-        <br><br>
-        <hr>
-        <p><b>Disconnect</b></p>
-        <button onclick="window.location.href='/disconnect.php'">Disconnect</button>
-    </div>
-
+    <?php 
+        }
+    ?>
+    <br>
+    <hr>
+    <button onclick="window.location.href='/accueil.php'">Back home</button>
+    <br><br>
+    <hr>
+    <p><b>Disconnect</b></p>
+    <button onclick="window.location.href='/disconnect.php'">Disconnect</button>
 
 </body>
 </html>

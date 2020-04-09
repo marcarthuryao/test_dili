@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Demo Dilitrust</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
@@ -29,8 +30,8 @@
             </div>
             <br>
             <div>
-                <h3>Profile type :</h3>
-                <select name="profile" required>
+                <label for="profile">Profile type * :</label>
+                <select name="profile" id="profile" required>
                     <option value="">Select value</option>
                     <option value="1">Employee</option>
                     <option value="2">Manager</option>

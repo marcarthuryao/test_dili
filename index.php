@@ -5,13 +5,20 @@ if(!empty($_POST) && isset($_POST["username"])){
     //contre mesure vulnérabilité à XSS
     $data =array();
     $email = htmlspecialchars($_POST["username"]);
-    $pass_wd = htmlspecialchars($_POST["passwd"]);
-
+    
     //contre mesure vulnérabilité à SQLi (sql injection)
-
-
-    $req = $PDO->prepare("SELECT A.id, A.display_name, A.email, A.pass, A.profil_id, B.label from test.dilitrust_user as A inner join test.dilitrust_role as B on A.profil_id=B.profil where A.email LIKE :email;");
-    $req->execute(array('email'=>$email));
+    if(isset($_POST["passwd"])){
+        $pass_wd = htmlspecialchars($_POST["passwd"]);
+        $req = $PDO->prepare("SELECT A.id, A.display_name, A.email, A.pass, A.profil_id, B.label from test.dilitrust_user as A inner join test.dilitrust_role as B on A.profil_id=B.profil where A.email LIKE :email and A.profil_id!=:profil);");
+        $req->execute(array('email'=>$email,'profil'=>'3'));
+    }
+        
+    if(isset($_POST["passwd_ad"])){
+        $pass_wd = htmlspecialchars($_POST["passwd_ad"]);
+        $req = $PDO->prepare("SELECT A.id, A.display_name, A.email, A.pass, A.profil_id, B.label from test.dilitrust_user as A inner join test.dilitrust_role as B on A.profil_id=B.profil where (A.email LIKE :email and A.profil_id=:profil);");
+        $req->execute(array('email'=>$email,'profil'=>'3'));
+    }
+    
 
     if($req->rowCount()){
         

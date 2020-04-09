@@ -4,9 +4,12 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Demo Dilitrust</title>
+</head>
 <body>
     <?php if(!$_SESSION["id"]){ ?>
-    <h1>Welcome to my apllication demo</h1>
+    <h1>Welcome to my application demo</h1>
         <form action="/index.php" method="post">
             <div style="margin-left:25px">
                 <h2><center>Are you a user ?</center></h2>
@@ -40,8 +43,8 @@ session_start();
                 </div>
                 <br>
                 <div>
-                    <label for="passwd">Password : </label>
-                    <input type="password" id="passwd" name="passwd" value="" required>
+                    <label for="passwd_ad">Password : </label>
+                    <input type="password" id="passwd_ad" name="passwd_ad" value="" required>
                 </div>
                 <br>
                 <div>
@@ -64,6 +67,7 @@ session_start();
                     <label for="">Registered as : </label>
                     <span><?php echo $data["label"]; ?></span>
                 </div>
+                <br>
                 <div>
                     <input type="hidden" name="user_id" value="<?php echo encode_user($data["id"]); ?>">
                     <input type="submit" value="Profile">
