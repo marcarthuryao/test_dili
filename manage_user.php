@@ -10,7 +10,8 @@ include("encode_decode.php");
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
-    <table id="users">
+<h2><center>Users list </center></h2>
+    <table style="margin-left:10px" id="users">
         <thead>
             <tr>
                 <th style="text-align:center">Nom</th>

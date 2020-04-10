@@ -5,18 +5,22 @@ if(!empty($_POST) && isset($_POST["username"])){
     //contre mesure vulnérabilité à XSS
     $data =array();
     $email = htmlspecialchars($_POST["username"]);
+    //identify error
+    $flag=0;
     
     //contre mesure vulnérabilité à SQLi (sql injection)
     if(isset($_POST["passwd"])){
         $pass_wd = htmlspecialchars($_POST["passwd"]);
-        $req = $PDO->prepare("SELECT A.id, A.display_name, A.email, A.pass, A.profil_id, B.label from test.dilitrust_user as A inner join test.dilitrust_role as B on A.profil_id=B.profil where A.email LIKE :email and A.profil_id!=:profil);");
+        $req = $PDO->prepare("SELECT A.id, A.display_name, A.email, A.pass, A.profil_id, B.label from test.dilitrust_user as A inner join test.dilitrust_role as B on A.profil_id=B.profil where (A.email LIKE :email and A.profil_id!=:profil);");
         $req->execute(array('email'=>$email,'profil'=>'3'));
+        $flag=1;
     }
         
     if(isset($_POST["passwd_ad"])){
         $pass_wd = htmlspecialchars($_POST["passwd_ad"]);
         $req = $PDO->prepare("SELECT A.id, A.display_name, A.email, A.pass, A.profil_id, B.label from test.dilitrust_user as A inner join test.dilitrust_role as B on A.profil_id=B.profil where (A.email LIKE :email and A.profil_id=:profil);");
         $req->execute(array('email'=>$email,'profil'=>'3'));
+        $flag=2;
     }
     
 
@@ -27,7 +31,10 @@ if(!empty($_POST) && isset($_POST["username"])){
             $pass_hash = $result["pass"];
         }
         if(!password_verify($pass_wd, $pass_hash)){
-            $success = 'no_account';
+            if($flag==1)
+                $success = 'no_account_user';
+            if($flag==2)
+            $success = 'no_account_admin';
             header("location: /accueil.php?success=".$success);
         }
         else{

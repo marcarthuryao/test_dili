@@ -21,7 +21,7 @@ while($result = $req->fetch(PDO::FETCH_ASSOC)){
     <h2><center>Profile :  </center></h2>
     <br><br>
     <?php
-        if($data["profil_id"]!=3) {
+        if($data["profil_id"]!='3') {
     ?>
         <div style="margin-left:25px">
             <hr>
@@ -29,7 +29,7 @@ while($result = $req->fetch(PDO::FETCH_ASSOC)){
             <br><br>
             <div>
                 <label for="">Profile : </label>
-                <span><?php echo $data["label"]; ?></span>
+                <span style="color:blue"><?php echo $data["label"]; ?></span>
             </div>
             <br>
             <div>
@@ -42,7 +42,7 @@ while($result = $req->fetch(PDO::FETCH_ASSOC)){
                 <span><?php echo $data["email"]; ?></span>
             </div>
         </div>
-    <php
+    <?php
         } else{
     ?>
         <div style="margin-left:25px">
@@ -51,7 +51,7 @@ while($result = $req->fetch(PDO::FETCH_ASSOC)){
             <br><br>
             <div>
                 <label for="">Profile : </label>
-                <span><?php echo $data["label"]; ?></span>
+                <span style="color:blue"><?php echo $data["label"]; ?></span>
             </div>
             <br>
             <div>

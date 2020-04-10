@@ -1,7 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.0.2
--- https://www.phpmyadmin.net/
---
 -- Host: localhost
 -- Generation Time: Apr 09, 2020 at 08:55 PM
 -- Server version: 10.4.11-MariaDB
@@ -40,7 +36,8 @@ CREATE TABLE `dilitrust_role` (
 
 INSERT INTO `dilitrust_role` (`id`, `profil`, `label`, `date`) VALUES
 (1, 1, 'employee', '2020-04-09 14:06:50'),
-(2, 2, 'manager', '2020-04-09 14:06:50');
+(2, 2, 'manager', '2020-04-09 14:06:50'),
+(3, 3, 'administrator', '2020-04-09 14:06:50');
 
 -- --------------------------------------------------------
 
