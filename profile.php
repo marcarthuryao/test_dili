@@ -42,6 +42,9 @@ while($result = $req->fetch(PDO::FETCH_ASSOC)){
                 <span><?php echo $data["email"]; ?></span>
             </div>
         </div>
+        <hr>
+        <p><b>Add document</b></p>
+        <span>To do later</span>
     <?php
         } else{
     ?>
@@ -65,18 +68,23 @@ while($result = $req->fetch(PDO::FETCH_ASSOC)){
             </div>
             <br>
             <hr>
-            <button onclick="window.location.href='/manage_user.php'">Manage users</button>
+            <button onclick="manage('<?php echo $data['id'] ; ?>')">Manage users</button>
         </div>
     <?php 
         }
     ?>
     <br>
     <hr>
-    <button onclick="window.location.href='/accueil.php'">Back home</button>
+    <button onclick="window.location.href='/index.php'">Back home</button>
     <br><br>
     <hr>
     <p><b>Disconnect</b></p>
     <button onclick="window.location.href='/disconnect.php'">Disconnect</button>
 
+    <script>
+        function manage(admin_id){
+            window.location.href="/manage_user.php?admin_id="+admin_id;
+        }
+    </script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php
 include("sql_connect.php"); 
-include("encode_decode.php");       
+include("encode_decode.php");  
+$admin_id = $_GET["admin_id"];
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +28,7 @@ include("encode_decode.php");
                 $req->execute();
                 if($req->rowCount()){
                     while($result = $req->fetch(PDO::FETCH_ASSOC)){
-                        echo "<tr><td align='center'>".$result["display_name"]."</td><td align='center'>".$result["email"]."</td><td align='center'>".$result["pass"]."</td><td align='center'>".$result["label"]."</td><td align='center'><a href='edit_user.php?id=".encode_user($result["id"])."'>Delete</a></td></tr>";
+                        echo "<tr><td align='center'>".$result["display_name"]."</td><td align='center'>".$result["email"]."</td><td align='center'>".$result["pass"]."</td><td align='center'>".$result["label"]."</td><td align='center'><a href='edit_user.php?ad_dili=".$admin_id."&id=".encode_user($result["id"])."'>Delete</a></td></tr>";
                     }
                 }
                 else{
@@ -41,7 +42,7 @@ include("encode_decode.php");
 
     <br>
     <hr>
-    <button onclick="window.location.href='/accueil.php'">Back home</button>
+    <button onclick="window.location.href='/index.php'">Back home</button>
     <br><br>
     <hr>
     <p><b>Disconnect</b></p>

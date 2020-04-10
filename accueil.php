@@ -21,7 +21,7 @@ session_start();
             <div style="margin-left:25px">
                 <h2><center>Are you a user ?</center></h2>
                 <?php if(isset($_GET["success"]) && $_GET["success"]=="no_account_user"){
-                    echo "<span style='color:red'>User doesn't exist or bad email/password</span>";
+                    echo "<span style='color:red'>User : email/password</span>";
                 } ?>
                 <div>
                     <label for="username">Login (email) : </label>
@@ -43,7 +43,7 @@ session_start();
             <div style="margin-left:25px">
                 <h2><center>Or an administrator ?</center></h2>
                 <?php  if(isset($_GET["success"]) && $_GET["success"]=="no_account_admin"){
-                    echo "<span style='color:red'>Admin doesn't exist or bad email/password</span>";
+                    echo "<span style='color:red'>Admin : bad email/password</span>";
                 } ?>
                 <div>
                     <label for="username">Login (email) : </label>

@@ -1,5 +1,6 @@
 <?php
 include("sql_connect.php");
+session_start();
 
 if(!empty($_POST) && isset($_POST["username"])){
     //contre mesure vulnérabilité à XSS
@@ -38,7 +39,6 @@ if(!empty($_POST) && isset($_POST["username"])){
             header("location: /accueil.php?success=".$success);
         }
         else{
-            session_start();
             $_SESSION["id"]= $data["id"];
             $_SESSION["name"]= $data["display_name"];
             include("accueil.php");
@@ -53,6 +53,14 @@ if(!empty($_POST) && isset($_POST["username"])){
     // closing connection
     $PDO = null;
     //echo 'username = '.$_GET["username"].' et password = '.$_GET["passwd"];
+}
+else if (isset($_SESSION["id"])){
+    $req = $PDO->prepare("SELECT A.id, A.display_name, A.email, A.pass, A.profil_id, B.label from test.dilitrust_user as A inner join test.dilitrust_role as B on A.profil_id=B.profil where (A.id =:id);");
+    $req->execute(array('id'=>$_SESSION["id"]));
+    while($result = $req->fetch(PDO::FETCH_ASSOC)){
+        $data = $result;
+    }
+    include("accueil.php");
 }
 else{
     header("location: /accueil.php");
