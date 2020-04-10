@@ -7,7 +7,7 @@
 
 ## Instructions rapides pour l'exécution de l'application
 
-1. Installer **docker** avant de faire la demo. Vous pouvez suivre les instructions là :
+1. Installer **docker** avant de faire la demo. Vous pouvez suivre les instructions là : https://doc.ubuntu-fr.org/docker. Il suffit de recopier les commandes de la section 2 et 3.
 
 2. Une fois docker installé, pour lancer l'application, exécuter le script **script_docker.sh** en faisant la commande:
     ```sh
